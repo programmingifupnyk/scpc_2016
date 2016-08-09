@@ -8,10 +8,17 @@ int main () {
 		cin >> S;
 		cin >> X;
 		if (S=="next"){
-			cout << (X-1+100) % 100 << endl;
+			if (not(X==0)){
+				cout << X-1 << endl; 	
+			} else {
+				cout << 99 << endl;
+			}
 		} else if (S=="prev"){
-			cout << (X+1) % 100 << endl;
+			if(not(X==99)){
+				cout << X+1 << endl;
+			} else {
+				cout << 0 << endl;
+			}
 		}
 	}
-	return 0;
 }
