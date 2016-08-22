@@ -12,22 +12,37 @@ int invert(int a){
 	return reverse;
 }
 
+int countFactor(int num){
+	int result=0;
+	for (int i=1;i<=sqrt(num);i++){
+		if ((num%i)==0) {
+			result++;
+		}
+	}
+	return result;
+}
+
 int main () {
 	int T, N;
+	long int Z;
+	long int count=0;
 	cin >> T;
 	for (int i=0;i<T;i++){
 		cin >> N;
 		if((N%2)==0){
 			for ( int j=pow(10,((N / 2)-1));j<pow(10,((N / 2)));j++){
-				cout << j*pow(10,((N / 2)))+invert(j) << endl;
+				Z=j*pow(10,((N / 2)))+invert(j);
+				count+=countFactor(Z);
 			}
 		} else {
 			for ( int j=pow(10,((N / 2)-1));j<pow(10,((N / 2)));j++){
 				for (int k=1;k<10;k++){
-					cout << j*(pow(10,((N / 2)+1)))+k*(pow(10,(N / 2)))+invert(j) << endl;	
+					Z=j*(pow(10,((N / 2)+1)))+k*(pow(10,(N / 2)))+invert(j);
+					count+=countFactor(Z);
 				}
 			}
 		}
+		cout << count << endl;
 	}
 	return 0;
 }
