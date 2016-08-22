@@ -15,11 +15,18 @@ int invert(int a){
 int main () {
 	int T, N;
 	cin >> T;
-	int number;
 	for (int i=0;i<T;i++){
 		cin >> N;
-		for ( int j=pow(10,((N / 2)-1));j<pow(10,((N / 2)));j++){
-			cout << j*pow(10,((N / 2)))+invert(j) << endl;
+		if((N%2)==0){
+			for ( int j=pow(10,((N / 2)-1));j<pow(10,((N / 2)));j++){
+				cout << j*pow(10,((N / 2)))+invert(j) << endl;
+			}
+		} else {
+			for ( int j=pow(10,((N / 2)-1));j<pow(10,((N / 2)));j++){
+				for (int k=1;k<10;k++){
+					cout << j*(pow(10,((N / 2)+1)))+k*(pow(10,(N / 2)))+invert(j) << endl;	
+				}
+			}
 		}
 	}
 	return 0;
